@@ -139,12 +139,124 @@
             height: auto;
             display: block;
         }
+
+        /* Banner Slideshow Fixed Ratio & Uniform Auto-Crop */
         .slideshow {
             position: relative;
+            width: 100%;
+            height: 580px;
+            overflow: hidden;
+            background-color: #0f172a;
         }
-        .control-slideshow {
+        .owl-slideshow,
+        .owl-slideshow .owl-stage-outer,
+        .owl-slideshow .owl-stage,
+        .owl-slideshow .owl-item,
+        .owl-slideshow .item_slider {
+            height: 100% !important;
+        }
+        .owl-slideshow .owl-stage {
+            display: flex !important;
+        }
+        .owl-slideshow .item_slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .owl-slideshow .item_slider a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .owl-slideshow .item_slider img {
+            width: 100% !important;
+            height: 100% !important;
+            max-height: none !important;
+            object-fit: cover !important;
+            object-position: center center !important;
+            display: block !important;
+        }
+        .slideshow .control-slideshow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 15;
+            width: 44px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.45);
+            color: #ffffff;
+            font-size: 22px;
+            border-radius: 4px;
             cursor: pointer;
-            z-index: 10;
+            opacity: 0;
+            transition: all 0.3s ease;
+            margin: 0;
+        }
+        .slideshow:hover .control-slideshow {
+            opacity: 0.85;
+        }
+        .slideshow .control-slideshow:hover {
+            opacity: 1;
+            background-color: #cd171f;
+            color: #ffffff;
+        }
+        .slideshow .prev-slideshow {
+            left: 20px;
+        }
+        .slideshow .next-slideshow {
+            right: 20px;
+        }
+        .owl-slideshow .owl-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 15;
+            margin: 0;
+        }
+        .owl-slideshow .owl-dots .owl-dot span {
+            width: 12px;
+            height: 12px;
+            margin: 4px 6px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .owl-slideshow .owl-dots .owl-dot.active span,
+        .owl-slideshow .owl-dots .owl-dot:hover span {
+            background: #cd171f;
+            transform: scale(1.25);
+        }
+
+        /* Responsive Banner Slider Breakpoints */
+        @media (max-width: 1399px) {
+            .slideshow { height: 500px; }
+        }
+        @media (max-width: 1199px) {
+            .slideshow { height: 420px; }
+        }
+        @media (max-width: 991px) {
+            .slideshow { height: 340px; }
+            .slideshow .control-slideshow {
+                opacity: 0.7;
+                width: 36px;
+                height: 42px;
+                line-height: 42px;
+                font-size: 18px;
+            }
+        }
+        @media (max-width: 767px) {
+            .slideshow { height: 240px; }
+            .slideshow .prev-slideshow { left: 10px; }
+            .slideshow .next-slideshow { right: 10px; }
+        }
+        @media (max-width: 575px) {
+            .slideshow { height: 180px; }
         }
         .frmtim {
             transition: all 0.3s ease;
@@ -205,7 +317,8 @@
                     autoplayTimeout: 4500,
                     smartSpeed: 800,
                     nav: false,
-                    dots: true
+                    dots: true,
+                    autoHeight: false
                 });
 
                 $('.prev-slideshow').click(function() {
