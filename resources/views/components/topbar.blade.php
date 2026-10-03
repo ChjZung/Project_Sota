@@ -3,7 +3,7 @@
         <div class="topbar-inner">
             <div class="topbar-address">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>33 Nhi Binh 2 Street, Hoc Mon District, Ho Chi Minh City, Vietnam</span>
+                <span>{{ setting('address_hq', '33 Nhi Binh 2 Street, Hoc Mon District, Ho Chi Minh City, Vietnam') }}</span>
             </div>
             <div class="topbar-actions">
                 <div class="search-toggle">

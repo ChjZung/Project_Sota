@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\View\View;
@@ -12,7 +13,10 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        // Lấy 8 sản phẩm nổi bật kèm thông tin danh mục (Eager Loading tối ưu N+1)
+        // 1. Lấy danh sách banner slider đang hoạt động từ CSDL
+        $banners = Banner::active()->get();
+
+        // 2. Lấy 8 sản phẩm nổi bật kèm thông tin danh mục (Eager Loading tối ưu N+1)
         $featuredProducts = Product::featured()
             ->active()
             ->with('category')
@@ -20,20 +24,20 @@ class HomeController extends Controller
             ->latest()
             ->get();
 
-        // Lấy danh mục gốc (parent_id = null) kèm danh mục con
+        // 3. Lấy danh mục gốc (parent_id = null) kèm danh mục con
         $categories = Category::whereNull('parent_id')
             ->with('children')
             ->orderBy('sort_order')
             ->get();
 
-        // Số liệu năng lực sản xuất
+        // 4. Số liệu năng lực sản xuất (Lấy động từ Cấu hình Website trong Admin)
         $stats = [
-            ['icon' => 'fa-industry',     'number' => '10,000', 'unit' => 'm²',         'label' => 'Factory Area'],
-            ['icon' => 'fa-cogs',         'number' => '50',     'unit' => '+',           'label' => 'Injection Machines'],
-            ['icon' => 'fa-users',        'number' => '180',    'unit' => '+',           'label' => 'Employees'],
-            ['icon' => 'fa-box-open',     'number' => '200',    'unit' => '+ Tons/Month','label' => 'Production Capacity'],
+            ['icon' => 'fa-industry', 'number' => setting('stats_factory_area', '10,000'), 'unit' => 'm²', 'label' => 'Factory Area'],
+            ['icon' => 'fa-cogs',     'number' => setting('stats_machines', '50'),         'unit' => '+',  'label' => 'Injection Machines'],
+            ['icon' => 'fa-users',    'number' => setting('stats_employees', '180'),        'unit' => '+',  'label' => 'Employees'],
+            ['icon' => 'fa-box-open', 'number' => setting('stats_capacity', '200'),        'unit' => '+ Tons/Month', 'label' => 'Production Capacity'],
         ];
 
-        return view('pages.home', compact('featuredProducts', 'categories', 'stats'));
+        return view('pages.home', compact('banners', 'featuredProducts', 'categories', 'stats'));
     }
 }

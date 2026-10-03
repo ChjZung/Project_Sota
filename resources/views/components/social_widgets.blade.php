@@ -7664,14 +7664,8 @@
 
 
 
-    <a class="zalo n_mb" href="http://zalo.me/0917543353" target="_blank">
-
-
-
+    <a class="zalo n_mb" href="https://zalo.me/{{ setting('zalo', '0917543353') }}" target="_blank">
         <b>Zalo</b>
-
-
-
     </a>
 
 
@@ -7690,7 +7684,7 @@
 
 
 
-    <a href="tel:0917543353" class="call-now" rel="nofollow">
+    <a href="tel:{{ preg_replace('/[^0-9]/', '', setting('hotline', '0917543353')) }}" class="call-now" rel="nofollow">
 
 
 
@@ -7704,7 +7698,7 @@
 
 
 
-        <span>0917 543 353</span>
+        <span>{{ setting('hotline', '0917 543 353') }}</span>
 
 
 
@@ -7814,7 +7808,7 @@
 
 
 
-    <a class="zalo" href="http://zalo.me/0917543353" target="_blank">
+    <a class="zalo" href="https://zalo.me/{{ setting('zalo', '0917543353') }}" target="_blank">
 
 
 
@@ -7879,6 +7873,7 @@
 	</div>
 
 </div>
+
 
 
 

@@ -36,5 +36,8 @@ Route::get('/ngon-ngu', function (Illuminate\Http\Request $request) {
     return redirect()->back();
 })->name('lang');
 
+// Tuyến đường Quản trị (Admin CMS)
+require __DIR__.'/admin.php';
+
 // Catch-all dynamic slug for all pages, categories, and products matching live site URLs
 Route::get('/{slug}', [PageController::class, 'handleSlug'])->name('slug');

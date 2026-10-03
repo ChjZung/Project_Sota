@@ -6,9 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{ url('/') }}/">
 
-    <title>@yield('title', 'CÔNG TY TNHH SX TM NHỰA NHỊ BÌNH | Custom Plastic Injection Molding Manufacturer in Vietnam')</title>
-    <meta name="description" content="@yield('description', 'Sản xuất các sản phẩm nhựa kỹ thuật cao theo yêu cầu của khách hàng, với nhà xưởng và máy móc hiện đại. Products are exported to the US, Japan, EU.')">
-    <meta name="keywords" content="sản xuất đồ nhựa, ép nhựa, gia công khuôn nhựa, Nhựa Nhị Bình, plastic injection molding">
+    <title>@yield('title', setting('meta_title', 'CÔNG TY TNHH SX TM NHỰA NHỊ BÌNH | Custom Plastic Injection Molding Manufacturer in Vietnam'))</title>
+    <meta name="description" content="@yield('description', setting('meta_description', 'Sản xuất các sản phẩm nhựa kỹ thuật cao theo yêu cầu của khách hàng, với nhà xưởng và máy móc hiện đại. Products are exported to the US, Japan, EU.'))">
+    <meta name="keywords" content="{{ setting('meta_keywords', 'sản xuất đồ nhựa, ép nhựa, gia công khuôn nhựa, Nhựa Nhị Bình, plastic injection molding') }}">
+    <link rel="icon" type="image/x-icon" href="{{ setting('favicon', '/favicon.ico') }}">
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -38,54 +38,23 @@
             <p class="control-slideshow prev-slideshow transition"><i class="fas fa-chevron-left"></i></p>
 
             <div id="slider" class="owl-carousel owl-theme owl-slideshow">
-
-                                    <div class="item_slider">
-
-                        <a href="" target="_blank" title="Nhi Binh Factory VSIP 2A Front"><img onerror="this.src='/thumbs/910x380x2/assets/images/noimage.png';" src="/thumbs/1366x580x1/upload/photo/nhibinhfactoryvsip2afront-71880.jpg" alt="Nhi Binh Factory VSIP 2A Front" title="Nhi Binh Factory VSIP 2A Front"/></a>
-
-                        <!--                         <div class="slider_info1">
-
-                            <h3 class="slider_info__name1">Nhi Binh Factory VSIP 2A Front</h3>
-
-                        </div>
-
-                         -->
-
-                                            </div>
-
-                                    <div class="item_slider">
-
-                        <a href="https://nibiplastic.com/san-pham-cua-nhua-nhi-binh" target="_blank" title=""><img onerror="this.src='/thumbs/910x380x2/assets/images/noimage.png';" src="/thumbs/1366x580x1/upload/photo/nhibinhfactoryvsip2aside-48750.jpg" alt="" title=""/></a>
-
-                        <!--  -->
-
-                                            </div>
-
-                                    <div class="item_slider">
-
-                        <a href="" target="_blank" title=""><img onerror="this.src='/thumbs/910x380x2/assets/images/noimage.png';" src="/thumbs/1366x580x1/upload/photo/nhibinhfactoryvsip2ainjectionroom-4412.jpg" alt="" title=""/></a>
-
-                        <!--  -->
-
-                                            </div>
-
-                                    <div class="item_slider">
-
-                        <a href="" target="_blank" title=""><img onerror="this.src='/thumbs/910x380x2/assets/images/noimage.png';" src="/thumbs/1366x580x1/upload/photo/warehouse-5-38080.jpg" alt="" title=""/></a>
-
-                        <!--  -->
-
-                                            </div>
-
-                                    <div class="item_slider">
-
-                        <a href="" target="_blank" title=""><img onerror="this.src='/thumbs/910x380x2/assets/images/noimage.png';" src="/thumbs/1366x580x1/upload/photo/packing-room-75940.jpg" alt="" title=""/></a>
-
-                        <!--  -->
-
-                                            </div>
-
-                            </div>
+                @forelse($banners as $banner)
+                    <div class="item_slider">
+                        <a href="{{ $banner->link ?: 'javascript:void(0)' }}" target="{{ $banner->link ? '_blank' : '_self' }}" title="{{ $banner->title }}">
+                            <img onerror="this.src='/thumbs/910x380x2/assets/images/noimage.png';" 
+                                 src="{{ $banner->image }}" 
+                                 alt="{{ $banner->title }}" 
+                                 title="{{ $banner->title }}"/>
+                        </a>
+                    </div>
+                @empty
+                    <div class="item_slider">
+                        <a href="javascript:void(0)" title="Nhi Binh Factory">
+                            <img src="/thumbs/1366x580x1/upload/photo/nhibinhfactoryvsip2afront-71880.jpg" alt="Nhi Binh Factory"/>
+                        </a>
+                    </div>
+                @endforelse
+            </div>
 
             <p class="control-slideshow next-slideshow transition"><i class="fas fa-chevron-right"></i></p>
 
