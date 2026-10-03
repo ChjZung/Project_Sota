@@ -39,4 +39,18 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    /**
+     * Lấy toàn bộ sản phẩm thuộc danh mục này và tất cả các danh mục con của nó
+     */
+    public function allProducts()
+    {
+        $categoryIds = $this->children()->pluck('id')->push($this->id);
+        return Product::whereIn('category_id', $categoryIds)->active()->latest();
+    }
+
+    public function getAllProductsAttribute()
+    {
+        return $this->allProducts()->get();
+    }
 }

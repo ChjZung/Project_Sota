@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -24,17 +26,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/banners/{banner}/toggle', [BannerController::class, 'toggle'])->name('banners.toggle');
         Route::resource('banners', BannerController::class)->except(['show']);
 
-        Route::get('/categories', function () {
-            return view('admin.dashboard')->with('info', 'Chức năng Quản lý Danh mục sẽ được mở ở Giai đoạn 3.');
-        })->name('categories.index');
+        // Giai đoạn 3: Quản lý Danh mục sản phẩm
+        Route::resource('categories', CategoryController::class)->except(['show']);
 
-        Route::get('/products', function () {
-            return view('admin.dashboard')->with('info', 'Chức năng Quản lý Sản phẩm sẽ được mở ở Giai đoạn 3.');
-        })->name('products.index');
-
-        Route::get('/products/create', function () {
-            return view('admin.dashboard')->with('info', 'Chức năng Thêm Sản phẩm sẽ được mở ở Giai đoạn 3.');
-        })->name('products.create');
+        // Giai đoạn 3: Quản lý Sản phẩm
+        Route::patch('/products/{product}/toggle-featured', [ProductController::class, 'toggleFeatured'])->name('products.toggleFeatured');
+        Route::patch('/products/{product}/toggle-active', [ProductController::class, 'toggleActive'])->name('products.toggleActive');
+        Route::resource('products', ProductController::class)->except(['show']);
 
         Route::get('/posts', function () {
             return view('admin.dashboard')->with('info', 'Chức năng Quản lý Bài viết sẽ được mở ở Giai đoạn 4.');

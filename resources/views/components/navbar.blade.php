@@ -61,69 +61,22 @@
 
                         <li class="menulicha "><a href="{{ route('products.index') }}"
                                 title="Product">Product <i class="fas fa-chevron-down ml-1 n_mb"></i></a>
-                                                            <ul class="menu_cap_con">
-                                                                            <li><a title="CUSTOM PLASTIC PRODUCTS"
-                                                href="custom-plastic-products">CUSTOM PLASTIC PRODUCTS</a>
-                                                                                            <ul class="menu_cap_2">
-                                                                                                            <li><a title="Plastic Pet Toys, Dog Toys, Cat Toys"
-                                                                href="plastic-toys-for-pets">Plastic Pet Toys, Dog Toys, Cat Toys</a>
-                                                        </li>
-                                                                                                            <li><a title="Household Plastic Products"
-                                                                href="household-plastic-products">Household Plastic Products</a>
-                                                        </li>
-                                                                                                            <li><a title="Engineering Plastic Products, Technical Plastic Parts"
-                                                                href="engineering-plastic-parts">Engineering Plastic Products, Technical Plastic Parts</a>
-                                                        </li>
-                                                                                                            <li><a title="Plastic Products For The Textile Industry"
-                                                                href="plastic-products-for-the-textile-industry">Plastic Products For The Textile Industry</a>
-                                                        </li>
-                                                                                                            <li><a title="Plastic Accessories For The Woodworking Industry"
-                                                                href="plastic-accessories-for-the-woodworking-industry">Plastic Accessories For The Woodworking Industry</a>
-                                                        </li>
-                                                                                                            <li><a title="Plastic Products For The Medical Industry"
-                                                                href="plastic-products-for-the-medical-industry">Plastic Products For The Medical Industry</a>
-                                                        </li>
-                                                                                                            <li><a title="Plastic Products For The Food Industry"
-                                                                href="plastic-products-for-the-food-industry">Plastic Products For The Food Industry</a>
-                                                        </li>
-                                                                                                            <li><a title="Other Plastic Products, Plastic Parts"
-                                                                href="other-plastic-products-plastic-parts">Other Plastic Products, Plastic Parts</a>
-                                                        </li>
-                                                                                                    </ul>
-                                                                                    </li>
-                                                                            <li><a title="NHI BINH PLASTIC PRODUCTS"
-                                                href="nhi-binh-plastic-products">NHI BINH PLASTIC PRODUCTS</a>
-                                                                                            <ul class="menu_cap_2">
-                                                                                                            <li><a title="False Eyelashes Plastic Storage Box"
-                                                                href="false-eyelashes-plastic-storage-box">False Eyelashes Plastic Storage Box</a>
-                                                        </li>
-                                                                                                            <li><a title="Plastic Products For The Packaging Industry"
-                                                                href="plastic-products-for-the-packaging-industry">Plastic Products For The Packaging Industry</a>
-                                                        </li>
-                                                                                                            <li><a title="Latex Cups"
-                                                                href="latex-cups">Latex Cups</a>
-                                                        </li>
-                                                                                                            <li><a title="Other Plastic Products"
-                                                                href="other-plastic-products">Other Plastic Products</a>
-                                                        </li>
-                                                                                                    </ul>
-                                                                                    </li>
-                                                                            <li><a title="Children Plastic Toys -Mibitoi"
-                                                href="children-plastic-toys-mibitoi">Children Plastic Toys -Mibitoi</a>
-                                                                                            <ul class="menu_cap_2">
-                                                                                                            <li><a title=" Plane Geometric Toys"
-                                                                href="plane-geometric-toys"> Plane Geometric Toys</a>
-                                                        </li>
-                                                                                                            <li><a title="Mibitoi Children's Toys- Domino Toys"
-                                                                href="mibitoi-childrens-toys-domino-toys">Mibitoi Children's Toys- Domino Toys</a>
-                                                        </li>
-                                                                                                            <li><a title="Miclik Assembly Children Toys"
-                                                                href="miclik-assembly-children-toys">Miclik Assembly Children Toys</a>
-                                                        </li>
-                                                                                                    </ul>
-                                                                                    </li>
-                                                                    </ul>
-                                                    </li>
+                            <ul class="menu_cap_con">
+                                @if(isset($navCategories) && $navCategories->count())
+                                    @foreach($navCategories as $navRoot)
+                                        <li><a title="{{ $navRoot->name }}" href="{{ url($navRoot->slug) }}">{{ $navRoot->name }}</a>
+                                            @if($navRoot->children && $navRoot->children->count())
+                                                <ul class="menu_cap_2">
+                                                    @foreach($navRoot->children as $navChild)
+                                                        <li><a title="{{ $navChild->name }}" href="{{ url($navChild->slug) }}">{{ $navChild->name }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </li>
 
                         <li class="menulicha "><a href="service"
                                 title="Service">Service <i class="fas fa-chevron-down ml-1 n_mb"></i></a>
