@@ -337,22 +337,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 **Kết quả**: Đã có 22 danh mục phân cấp và 22 sản phẩm mẫu thực tế. Thêm/sửa/xóa sản phẩm hoặc danh mục trong Admin sẽ tự động cập nhật ngay trên trang chủ, thanh trượt tab và menu navbar.
 
-### Giai đoạn 4: Tin tức + Pages CMS + Album + Video + Partners
+### Giai đoạn 4: Tin tức + Pages CMS + Album + Video + Partners — ✅ HOÀN THÀNH 100%
 
-| # | Công việc | Chi tiết |
-|---|----------|---------|
-| 4.1 | CRUD Posts (type: news) | Bài viết tin tức, CKEditor, upload ảnh, toggle xuất bản |
-| 4.2 | CRUD Posts (type: album) | Ảnh album nhà xưởng/sự kiện |
-| 4.3 | CRUD Posts (type: video) | Nhập link YouTube + thumbnail |
-| 4.4 | **Nối động News carousel** | Sửa `home.blade.php` L762-796 |
-| 4.5 | **Nối động Album section** | Sửa `home.blade.php` L704-760 |
-| 4.6 | **Nối động Video section** | Sửa `home.blade.php` L798-836 |
-| 4.7 | CRUD Pages (CMS trang tĩnh) | Seed 5-6 trang quan trọng (About, Factory, Service...) vào DB. Admin sửa nội dung bằng CKEditor. Frontend render từ `pages` table thay vì file Blade tĩnh |
-| 4.8 | Sửa `PageController@handleSlug` | Ưu tiên query `pages` table trước khi fallback sang file `static/*.blade.php` (giữ backward-compatible) |
-| 4.9 | CRUD Partners/Markets | Logo thị trường xuất khẩu, sort order |
-| 4.10 | **Nối động Active Market** | Sửa `home.blade.php` L837-898 |
+| # | Công việc | Chi tiết | Trạng thái |
+|---|----------|---------|------------|
+| 4.1 | CRUD Posts (type: news) | Bài viết tin tức, CKEditor, upload ảnh, toggle xuất bản | ✅ Xong (`PostController`, `posts/index.blade.php`, `posts/form.blade.php`) |
+| 4.2 | CRUD Posts (type: album) | Ảnh album nhà xưởng/sự kiện | ✅ Xong (Lọc theo tab, upload ảnh, hiển thị trang album) |
+| 4.3 | CRUD Posts (type: video) | Nhập link YouTube + thumbnail | ✅ Xong (Hỗ trợ URL youtu.be & watch?v=) |
+| 4.4 | **Nối động News carousel** | Sửa `home.blade.php` | ✅ Xong (Hiển thị 3 bài viết tin tức mới nhất từ DB) |
+| 4.5 | **Nối động Album section** | Sửa `home.blade.php` | ✅ Xong (Hiển thị 5 album công ty từ DB) |
+| 4.6 | **Nối động Video section** | Sửa `home.blade.php` | ✅ Xong (Hiển thị 4 video YouTube tự động) |
+| 4.7 | CRUD Pages (CMS trang tĩnh) | Seed các trang tĩnh cốt lõi vào DB. Admin sửa nội dung bằng CKEditor | ✅ Xong (`Admin/PageController`, `pages/index.blade.php`, `pages/form.blade.php`, `cms-page.blade.php`) |
+| 4.8 | Sửa `PageController@handleSlug` | Query `pages` table trước, fallback dynamic template CMS | ✅ Xong (`PageController.php`) |
+| 4.9 | CRUD Partners/Markets | Quản lý logo thị trường xuất khẩu, đối tác, chứng chỉ | ✅ Xong (`PartnerController`, `partners/index.blade.php`, `partners/form.blade.php`) |
+| 4.10 | **Nối động Active Market** | Sửa `home.blade.php` | ✅ Xong (Hiển thị 8 thị trường xuất khẩu từ bảng partners) |
 
-**Kết quả**: 100% nội dung trang chủ lấy từ DB. Các trang tĩnh chuyển dần sang CMS.
+**Kết quả**: 100% nội dung trang chủ lấy từ DB. Các trang tĩnh cốt lõi (Giới thiệu, Nhà máy, Dịch vụ, Liên hệ) đã chuyển sang CMS linh hoạt cho admin quản lý.
+
 
 ### Giai đoạn 5: Inquiries Management + Polish + Bàn giao
 

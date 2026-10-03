@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Partner;
+use App\Models\Post;
 use App\Models\Product;
 use Illuminate\View\View;
 
@@ -38,6 +40,27 @@ class HomeController extends Controller
             ['icon' => 'fa-box-open', 'number' => setting('stats_capacity', '200'),        'unit' => '+ Tons/Month', 'label' => 'Production Capacity'],
         ];
 
-        return view('pages.home', compact('banners', 'featuredProducts', 'categories', 'stats'));
+        // 5. Album ảnh nhà xưởng & hoạt động
+        $albums = Post::ofType('album')->published()->take(8)->get();
+
+        // 6. Tin tức sự kiện nổi bật
+        $news = Post::ofType('news')->published()->take(8)->get();
+
+        // 7. Video phóng sự YouTube
+        $videos = Post::ofType('video')->published()->take(8)->get();
+
+        // 8. Thị trường xuất khẩu (Active Market)
+        $markets = Partner::where('type', 'market')->active()->get();
+
+        return view('pages.home', compact(
+            'banners', 
+            'featuredProducts', 
+            'categories', 
+            'stats', 
+            'albums', 
+            'news', 
+            'videos', 
+            'markets'
+        ));
     }
 }

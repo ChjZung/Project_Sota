@@ -228,57 +228,18 @@
     <div class="fixwidth">
         <div class="title" data-aos="fade-up">album</div>
         <div class="loadkhung_product">
-                            <div class="bvgt_item" style="margin: 0;" data-aos="fade-up">
-                    <a href="outside-the-plastic-product-manufacturing-factory-at-vsip-2a-binh-duong" class="scale-img">
-                        <img 
-                            src="/thumbs/400x300x1/upload/news/nhua-nhi-binh-nha-may-ep-nhua-vsip-2a-binh-duong-4998.jpg"
-                            alt="Outside the plastic product manufacturing factory at VSIP 2A, Binh Duong" />
-                        <a href="outside-the-plastic-product-manufacturing-factory-at-vsip-2a-binh-duong" class="ten_bottom">Outside the plastic product manufacturing factory at VSIP 2A, Binh Duong</a>
+            @forelse($albums as $alb)
+                <div class="bvgt_item" style="margin: 0;" data-aos="fade-up">
+                    <a href="{{ url($alb->slug) }}" class="scale-img">
+                        <img src="{{ $alb->image ?: '/thumbs/400x300x1/assets/images/noimage.png' }}"
+                             alt="{{ $alb->title }}" />
+                        <span class="ten_bottom">{{ $alb->title }}</span>
                     </a>
-                    <!-- <div class="bvgt_ten">
-                    Outside the plastic product manufacturing factory at VSIP 2A, Binh Duong                </div> -->
                 </div>
-                            <div class="bvgt_item" style="margin: 0;" data-aos="fade-up">
-                    <a href="injection-molding-area-with-modern-automated-injection-machines-equipped-with-robotic-arms" class="scale-img">
-                        <img 
-                            src="/thumbs/400x300x1/upload/news/3-4418-3847.jpeg"
-                            alt="Injection molding area with modern, automated injection machines equipped with robotic arms" />
-                        <a href="injection-molding-area-with-modern-automated-injection-machines-equipped-with-robotic-arms" class="ten_bottom">Injection molding area with modern, automated injection machines equipped with robotic arms</a>
-                    </a>
-                    <!-- <div class="bvgt_ten">
-                    Injection molding area with modern, automated injection machines equipped with robotic arms                </div> -->
-                </div>
-                            <div class="bvgt_item" style="margin: 0;" data-aos="fade-up">
-                    <a href="warehouse-for-plastic-raw-materials-plastic-products-and-packaging" class="scale-img">
-                        <img 
-                            src="/thumbs/400x300x1/upload/news/nhi-binh-plastic-warehouse-5517.jpg"
-                            alt="Warehouse for plastic raw materials, plastic products, and packaging" />
-                        <a href="warehouse-for-plastic-raw-materials-plastic-products-and-packaging" class="ten_bottom">Warehouse for plastic raw materials, plastic products, and packaging</a>
-                    </a>
-                    <!-- <div class="bvgt_ten">
-                    Warehouse for plastic raw materials, plastic products, and packaging                </div> -->
-                </div>
-                            <div class="bvgt_item" style="margin: 0;" data-aos="fade-up">
-                    <a href="plastic-product-assembly-and-packaging-room" class="scale-img">
-                        <img 
-                            src="/thumbs/400x300x1/upload/news/manufacture-plastic-product-packing-room-1033.jpeg"
-                            alt="Plastic product assembly and packaging room" />
-                        <a href="plastic-product-assembly-and-packaging-room" class="ten_bottom">Plastic product assembly and packaging room</a>
-                    </a>
-                    <!-- <div class="bvgt_ten">
-                    Plastic product assembly and packaging room                </div> -->
-                </div>
-                            <div class="bvgt_item" style="margin: 0;" data-aos="fade-up">
-                    <a href="album-2" class="scale-img">
-                        <img 
-                            src="/thumbs/400x300x1/upload/news/nhibinh2406028-6552-2098.jpg"
-                            alt="Inauguration Ceremony of the Plastic Factory in Binh Duong Province - Phase I" />
-                        <a href="album-2" class="ten_bottom">Inauguration Ceremony of the Plastic Factory in Binh Duong Province - Phase I</a>
-                    </a>
-                    <!-- <div class="bvgt_ten">
-                    Inauguration Ceremony of the Plastic Factory in Binh Duong Province - Phase I                </div> -->
-                </div>
-                    </div>
+            @empty
+                <div class="col-12 text-center text-muted py-3">Chưa có ảnh album.</div>
+            @endforelse
+        </div>
     </div>
 </div>
 
@@ -286,140 +247,69 @@
     <div class="fixwidth">
         <div class="title" data-aos="fade-up">News</div>
         <div class="owl-carousel owl-theme owl-dv mb-4">
-                            <div class="tintuc_item" data-aos="fade-up">
-                    <a organizing-the-15th-anniversary-of-the-establishment-of-nhi-binh-plastic-company class="scale-img">
-                        <img src="/thumbs/300x200x1/upload/news/nhua-nhi-binh-15-nam-1-7957.jpg" alt="Organizing the 15th anniversary of the establishment of Nhi Binh Plastic Company" />
+            @forelse($news as $item)
+                <div class="tintuc_item" data-aos="fade-up">
+                    <a href="{{ url($item->slug) }}" class="scale-img">
+                        <img src="{{ $item->image ?: '/thumbs/300x200x1/assets/images/noimage.png' }}" alt="{{ $item->title }}" />
                     </a>
-                    <a href="organizing-the-15th-anniversary-of-the-establishment-of-nhi-binh-plastic-company" class="tintuc_ten">
-                        Organizing the 15th anniversary of the establishment of Nhi Binh Plastic Company                    </a>
-                    <div class="tintuc_mota">
-                        Organizing tourism, team building, gala dinner to celebrate the 15th anniversary of the establishment of Nhi Binh Plastic Company 2009-2024                    </div>
-                </div>
-                            <div class="tintuc_item" data-aos="fade-up">
-                    <a organizing-a-vacation-for-staff-and-employees-in-2018 class="scale-img">
-                        <img src="/thumbs/300x200x1/upload/news/cb14798d8cc874962dd9-4881-2312.jpg" alt="Organizing a vacation for staff and employees in 2018" />
+                    <a href="{{ url($item->slug) }}" class="tintuc_ten">
+                        {{ $item->title }}
                     </a>
-                    <a href="organizing-a-vacation-for-staff-and-employees-in-2018" class="tintuc_ten">
-                        Organizing a vacation for staff and employees in 2018                    </a>
                     <div class="tintuc_mota">
-                        Organizing a vacation for staff and employees in 2018                    </div>
-                </div>
-                            <div class="tintuc_item" data-aos="fade-up">
-                    <a groundbreaking-ceremony-for-the-construction-of-binh-duong-factory-phase-2 class="scale-img">
-                        <img src="/thumbs/300x200x1/upload/news/dsc1177-7553-6242.jpg" alt="Groundbreaking Ceremony for the Construction of Binh Duong Factory Phase 2" />
-                    </a>
-                    <a href="groundbreaking-ceremony-for-the-construction-of-binh-duong-factory-phase-2" class="tintuc_ten">
-                        Groundbreaking Ceremony for the Construction of Binh Duong Factory Phase 2                    </a>
-                    <div class="tintuc_mota">
-                        Groundbreaking Ceremony for the Construction of Binh Duong Factory Phase 2                    </div>
-                </div>
+                        {{ \Illuminate\Support\Str::limit($item->summary, 140) }}
                     </div>
-        <a href="tin-tuc" class="xemgt m-auto" data-aos="fade-up">
-            See details        </a>
+                </div>
+            @empty
+                <div class="col-12 text-center text-muted py-3">Chưa có tin tức.</div>
+            @endforelse
+        </div>
+        <a href="{{ route('news') }}" class="xemgt m-auto" data-aos="fade-up">
+            See details
+        </a>
     </div>
 </div>
+
 <div class="wrap_bottom">
     <div class="fixwidth">
         <div class="title" data-aos="fade-up">VIDEO</div>
         <div class="owl-carousel owl-theme auto_video" data-aos="fade-up">
-                            <div class="tailvideo_item1">
-                    <a class="" data-fancybox="video" data-src="https://youtu.be/3r_do9QYJkU?si=zyDU3wRDA-D9Gltw" title="About Nhi Binh Plastic Company">
-                        <p class="pic-video"><img 
-                                src="/thumbs/400x250x1/upload/news/nhua-nhi-binh-nha-may-ep-nhua-vsip-2a-binh-duong-2640.jpg" alt="About Nhi Binh Plastic Company" />
+            @forelse($videos as $vid)
+                <div class="tailvideo_item1">
+                    <a class="" data-fancybox="video" data-src="{{ $vid->video_url }}" title="{{ $vid->title }}">
+                        <p class="pic-video">
+                            <img src="{{ $vid->image ?: '/thumbs/400x250x1/assets/images/noimage.png' }}" alt="{{ $vid->title }}" />
                         </p>
                     </a>
-                    <a data-fancybox="video" data-src="https://youtu.be/3r_do9QYJkU?si=zyDU3wRDA-D9Gltw" class="ten_bottom">About Nhi Binh Plastic Company</a>
+                    <a data-fancybox="video" data-src="{{ $vid->video_url }}" class="ten_bottom">{{ $vid->title }}</a>
                 </div>
-                            <div class="tailvideo_item1">
-                    <a class="" data-fancybox="video" data-src="https://www.youtube.com/watch?v=CVmL6suEY2A&amp;t=1s" title="Nhi Binh Plastic Company - Factory improvement program.">
-                        <p class="pic-video"><img 
-                                src="/thumbs/400x250x1/upload/news/5451232747994690-2719.jpg" alt="Nhi Binh Plastic Company - Factory improvement program." />
-                        </p>
-                    </a>
-                    <a data-fancybox="video" data-src="https://www.youtube.com/watch?v=CVmL6suEY2A&amp;t=1s" class="ten_bottom">Nhi Binh Plastic Company - Factory improvement program.</a>
-                </div>
-                            <div class="tailvideo_item1">
-                    <a class="" data-fancybox="video" data-src="https://www.youtube.com/watch?v=XM6xWJm19_Y" title="Inauguration ceremony of phase 1 - Nhi Binh Plastic factory at VSIP 2A Industrial Park - Binh Duong">
-                        <p class="pic-video"><img 
-                                src="/thumbs/400x250x1/upload/news/dsc1177-7553-5199.jpg" alt="Inauguration ceremony of phase 1 - Nhi Binh Plastic factory at VSIP 2A Industrial Park - Binh Duong" />
-                        </p>
-                    </a>
-                    <a data-fancybox="video" data-src="https://www.youtube.com/watch?v=XM6xWJm19_Y" class="ten_bottom">Inauguration ceremony of phase 1 - Nhi Binh Plastic factory at VSIP 2A Industrial Park - Binh Duong</a>
-                </div>
-                            <div class="tailvideo_item1">
-                    <a class="" data-fancybox="video" data-src="https://www.youtube.com/watch?v=a9R5yG021EU" title="Why should you choose Nhi Binh Plastic as a strategic supplier?">
-                        <p class="pic-video"><img 
-                                src="/thumbs/400x250x1/upload/news/z5448116717809391c65151dcb657d1bae230a111edb71-1484-4275.jpg" alt="Why should you choose Nhi Binh Plastic as a strategic supplier?" />
-                        </p>
-                    </a>
-                    <a data-fancybox="video" data-src="https://www.youtube.com/watch?v=a9R5yG021EU" class="ten_bottom">Why should you choose Nhi Binh Plastic as a strategic supplier?</a>
-                </div>
-                    </div>
+            @empty
+                <div class="col-12 text-center text-muted py-3">Chưa có video.</div>
+            @endforelse
+        </div>
     </div>
 </div>
+
 <div class="wrap_bottom pb-5" id="background-tuvan">
     <div class="fixwidth">
         <div class="title" data-aos="fade-up">ACTIVE MARKET</div>
         <div class="owl-carousel owl-theme auto_social" data-aos="fade-up">
-                            <div class="doitac_item text-center">
+            @forelse($markets as $mkt)
+                <div class="doitac_item text-center">
                     <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhuanhibinhvietnammarket-1545.png" />
+                        @if($mkt->link)
+                            <a href="{{ $mkt->link }}" target="_blank">
+                                <img src="{{ $mkt->image }}" alt="{{ $mkt->name }}" />
+                            </a>
+                        @else
+                            <img src="{{ $mkt->image }}" alt="{{ $mkt->name }}" />
+                        @endif
                     </div>
                 </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhibinhplasticusamarket-1609.png" />
-                    </div>
-                </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhuanhibinhjapanmarket-4762.png" />
-                    </div>
-                </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhibinhplasticchinamarket-3025.png" />
-                    </div>
-                </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhibinhplasticnetherlandmarket-3885.png" />
-                    </div>
-                </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhibinhplasticspainmarket-1820.png" />
-                    </div>
-                </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhuanhibinhcanadamarket-3384.png" />
-                    </div>
-                </div>
-
-                            <div class="doitac_item text-center">
-                    <div class="scale-img">
-                        <img 
-                            src="/thumbs/200x100x1/upload/photo/nhibinhplasticenglandmarket-6239.png" />
-                    </div>
-                </div>
-
-                    </div>
+            @empty
+                <div class="col-12 text-center text-muted py-3">Chưa có thị trường.</div>
+            @endforelse
+        </div>
     </div>
-</div></div>
-
-        
+</div>
+</div>
 @endsection
