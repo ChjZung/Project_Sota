@@ -325,17 +325,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 **Kết quả**: Sếp vào admin đổi logo, hotline, banner → website cập nhật ngay lập tức. **Đây là milestone quan trọng nhất để show sếp.**
 
-### Giai đoạn 3: Sản phẩm + Danh mục (Core Business)
+### Giai đoạn 3: Sản phẩm + Danh mục (Core Business) — ✅ HOÀN THÀNH 100%
 
-| # | Công việc | Chi tiết |
-|---|----------|---------|
-| 3.1 | CRUD Category trong Admin | Tree view danh mục cha-con, upload ảnh, sắp xếp thứ tự |
-| 3.2 | CRUD Product trong Admin | Form đầy đủ: chọn danh mục, upload ảnh chính + gallery nhiều ảnh, CKEditor cho mô tả, bảng thông số kỹ thuật (dynamic key-value rows), toggle featured/active |
-| 3.3 | **Nối động Navbar** | Sửa `navbar.blade.php` 197 dòng: thay toàn bộ hardcode bằng `@foreach` lấy categories từ DB (đã có relationship `parent/children`) |
-| 3.4 | **Nối động 3 Tab sản phẩm trang chủ** | Sửa `home.blade.php` L206-700: 3 tab = 3 danh mục gốc, sản phẩm bên trong = `$category->products` |
-| 3.5 | Sửa `PageController@handleSlug` | Bỏ fallback tạo `dynamicProduct` giả (L106-128) — vì giờ tất cả sản phẩm đã nằm trong DB |
+| # | Công việc | Chi tiết | Trạng thái |
+|---|----------|---------|------------|
+| 3.1 | CRUD Category trong Admin | Tree view danh mục cha-con, upload ảnh, sắp xếp thứ tự | ✅ Xong (`CategoryController`, `categories/index.blade.php`, `categories/form.blade.php`) |
+| 3.2 | CRUD Product trong Admin | Form đầy đủ: chọn danh mục, upload ảnh chính + gallery nhiều ảnh, CKEditor cho mô tả, bảng thông số kỹ thuật động, toggle featured/active | ✅ Xong (`ProductController`, `products/index.blade.php`, `products/form.blade.php`) |
+| 3.3 | **Nối động Navbar** | Sửa `navbar.blade.php`: thay thế toàn bộ menu danh mục tĩnh bằng dynamic `@foreach` từ DB qua View Composer trong `AppServiceProvider` | ✅ Xong (`components/navbar.blade.php`, `AppServiceProvider.php`) |
+| 3.4 | **Nối động 3 Tab sản phẩm trang chủ** | Sửa `home.blade.php`: 3 tab = 3 danh mục gốc, sản phẩm bên trong = `$category->all_products` | ✅ Xong (`pages/home.blade.php`, `Category@allProducts`) |
+| 3.5 | Sửa `PageController@handleSlug` | Xem chi tiết sản phẩm / danh mục theo slug trong CSDL | ✅ Xong (`PageController.php`) |
 
-**Kết quả**: Thêm sản phẩm mới trong admin → tự động hiển thị trên trang chủ + trang danh mục + menu navbar.
+**Kết quả**: Đã có 22 danh mục phân cấp và 22 sản phẩm mẫu thực tế. Thêm/sửa/xóa sản phẩm hoặc danh mục trong Admin sẽ tự động cập nhật ngay trên trang chủ, thanh trượt tab và menu navbar.
 
 ### Giai đoạn 4: Tin tức + Pages CMS + Album + Video + Partners
 
