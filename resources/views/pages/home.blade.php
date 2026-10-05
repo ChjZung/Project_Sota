@@ -77,11 +77,11 @@
 
 
 
-<p data-sourcepos="5:1-5:205" style="text-align:justify;"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="color:#666666;"><strong>   In June 2016,</strong> Nhi Binh Plastic inaugurated its Binh Duong Branch Factory in VSIP II-A Industrial Park with an investment of VND 45 billion. This factory is 1<strong>0,000m²</strong>. </span></span></span></p>
+<p data-sourcepos="5:1-5:205" style="text-align:justify;"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="color:#666666;"><strong>   In June 2016,</strong> Nhi Binh Plastic inaugurated its Binh Duong Branch Factory in VSIP II-A Industrial Park with an investment of VND 45 billion. This factory is <strong>{{ setting('stats_factory_area', '10,000') }}m²</strong>. </span></span></span></p>
 
 
 
-<p data-sourcepos="7:1-7:483" style="text-align:justify;"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="color:#666666;"><strong>   With a long-term vision,</strong> we have continuously expanded our operations, investing heavily in a clean production plant, modern machinery and equipment, applying automation in production, digitalizing management, and training our employees. To date, we have over <strong>50 injection molding machines</strong>, over <strong>180 officers and workers</strong>, with a production capacity of over <strong>200 tons/month</strong>. All of this is aimed at better meeting the needs of our customers and helping them grow stronger together.</span></span></span></p>
+<p data-sourcepos="7:1-7:483" style="text-align:justify;"><span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><span style="color:#666666;"><strong>   With a long-term vision,</strong> we have continuously expanded our operations, investing heavily in a clean production plant, modern machinery and equipment, applying automation in production, digitalizing management, and training our employees. To date, we have over <strong>{{ setting('stats_machines', '50') }} injection molding machines</strong>, over <strong>{{ setting('stats_employees', '180') }} officers and workers</strong>, with a production capacity of over <strong>{{ setting('stats_capacity', '200') }} tons/month</strong>. All of this is aimed at better meeting the needs of our customers and helping them grow stronger together.</span></span></span></p>
 
                 </div>
                 <a href="gioi-thieu" class="xemgt mb-3" data-aos="fade-right">

@@ -15,10 +15,19 @@ class InquiryStoreRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        $message = $this->input('message') ?? $this->input('noidung');
+        $subject = $this->input('tieude');
+        if ($subject && $message) {
+            $message = "[$subject] " . $message;
+        } elseif ($subject && !$message) {
+            $message = $subject;
+        }
+
         $this->merge([
             'name'    => $this->input('name') ?? $this->input('ten'),
             'phone'   => $this->input('phone') ?? $this->input('dienthoai'),
-            'message' => $this->input('message') ?? $this->input('noidung') ?? $this->input('tieude'),
+            'company' => $this->input('company') ?? $this->input('diachi'),
+            'message' => $message,
         ]);
     }
 

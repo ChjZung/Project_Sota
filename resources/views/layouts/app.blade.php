@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 
     {{-- Original Site Styles --}}
     <link rel="stylesheet" href="/assets/bootstrap/bootstrap.css">
@@ -297,6 +298,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
@@ -340,10 +342,10 @@
                     dots: false,
                     responsiveClass: true,
                     responsive: {
-                        0: { items: 2, margin: 10 },
-                        450: { items: 2, margin: 10 },
+                        0: { items: 1, margin: 10 },
+                        450: { items: 2, margin: 15 },
                         800: { items: 3, margin: 15 },
-                        1024: { items: 4, margin: 20 }
+                        1024: { items: 3, margin: 20 }
                     }
                 });
             }
@@ -362,6 +364,63 @@
                         450: { items: 2, margin: 10 },
                         800: { items: 3, margin: 15 },
                         1024: { items: 3, margin: 20 }
+                    }
+                });
+            }
+
+            // 3.1 Initialize Video Carousel
+            if ($(".auto_video").length) {
+                $('.auto_video').owlCarousel({
+                    loop: false,
+                    autoplay: false,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                    responsiveClass: true,
+                    responsive: {
+                        0: { items: 1 },
+                        576: { items: 2 },
+                        768: { items: 3 },
+                        1024: { items: 4 }
+                    }
+                });
+            }
+
+            // 3.2 Initialize Active Market / Social Carousel
+            if ($(".auto_social").length) {
+                $('.auto_social').owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 2500,
+                    autoplayHoverPause: true,
+                    smartSpeed: 500,
+                    margin: 20,
+                    nav: false,
+                    dots: false,
+                    responsiveClass: true,
+                    responsive: {
+                        0: { items: 2 },
+                        450: { items: 3 },
+                        768: { items: 5 },
+                        1024: { items: 8 }
+                    }
+                });
+            }
+
+            // 3.3 Initialize About Articles Carousel
+            if ($(".owl-bvgt").length) {
+                $('.owl-bvgt').owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 3500,
+                    margin: 20,
+                    nav: false,
+                    dots: false,
+                    responsiveClass: true,
+                    responsive: {
+                        0: { items: 1 },
+                        600: { items: 2 },
+                        1000: { items: 3 }
                     }
                 });
             }

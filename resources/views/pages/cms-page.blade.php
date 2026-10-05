@@ -25,7 +25,7 @@
 
         @if($cmsPage->banner_image)
             <div class="page-banner mb-4 text-center">
-                <img src="{{ $cmsPage->banner_image }}" alt="{{ $cmsPage->title }}" class="img-fluid rounded shadow-sm" style="max-height: 400px; width: 100%; object-fit: cover;">
+                <img src="{{ $cmsPage->banner_image }}" alt="{{ $cmsPage->title }}" class="img-fluid rounded shadow-sm" style="max-height: 400px; width: 100%; object-fit: cover;" onerror="this.style.display='none'">
             </div>
         @endif
 

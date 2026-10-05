@@ -43,7 +43,7 @@
         </a>
     </div>
 
-    @if($errors->any())
+    @if(isset($errors) && $errors->any())
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <i class="fas fa-exclamation-triangle mr-1"></i> <strong>Đã xảy ra lỗi:</strong>
             <ul class="mb-0 mt-1 pl-3">

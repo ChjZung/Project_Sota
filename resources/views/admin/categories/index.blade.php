@@ -14,9 +14,14 @@
                 Quản lý cây danh mục sản phẩm 2 cấp (Danh mục cha & Danh mục con), đồng bộ lên Navbar và Trang chủ.
             </p>
         </div>
-        <a href="{{ route('admin.categories.create') }}" class="btn btn-danger font-weight-bold shadow-sm">
-            <i class="fas fa-plus mr-1"></i> Thêm Danh Mục Mới
-        </a>
+        <div class="d-flex align-items-center">
+            <a href="{{ route('admin.products.create') }}" class="btn btn-success font-weight-bold shadow-sm mr-2">
+                <i class="fas fa-box-open mr-1"></i> + Thêm Sản Phẩm Mới
+            </a>
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-danger font-weight-bold shadow-sm">
+                <i class="fas fa-plus mr-1"></i> Thêm Danh Mục Mới
+            </a>
+        </div>
     </div>
 
     <!-- Alert Notifications -->
@@ -88,7 +93,10 @@
                                     {{ $root->products_count }} SP
                                 </a>
                             </td>
-                            <td class="text-right align-middle">
+                            <td class="text-right align-middle text-nowrap">
+                                <a href="{{ route('admin.products.create', ['category_id' => $root->id]) }}" class="btn btn-sm btn-outline-success mr-1" title="Thêm sản phẩm mới vào danh mục {{ $root->name }}">
+                                    <i class="fas fa-plus"></i> Thêm SP
+                                </a>
                                 <a href="{{ route('admin.categories.edit', $root) }}" class="btn btn-sm btn-outline-primary mr-1" title="Chỉnh sửa">
                                     <i class="fas fa-edit"></i> Sửa
                                 </a>
@@ -134,7 +142,10 @@
                                         {{ $child->products_count }} SP
                                     </a>
                                 </td>
-                                <td class="text-right align-middle">
+                                <td class="text-right align-middle text-nowrap">
+                                    <a href="{{ route('admin.products.create', ['category_id' => $child->id]) }}" class="btn btn-sm btn-outline-success mr-1" title="Thêm sản phẩm mới vào danh mục {{ $child->name }}">
+                                        <i class="fas fa-plus"></i> Thêm SP
+                                    </a>
                                     <a href="{{ route('admin.categories.edit', $child) }}" class="btn btn-sm btn-outline-primary mr-1" title="Chỉnh sửa">
                                         <i class="fas fa-edit"></i> Sửa
                                     </a>

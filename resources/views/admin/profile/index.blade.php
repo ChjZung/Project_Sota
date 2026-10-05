@@ -19,7 +19,7 @@
                 </h6>
             </div>
             <div class="card-body p-4">
-                @if ($errors->any())
+                @if (isset($errors) && $errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <ul class="mb-0 small">
                             @foreach ($errors->all() as $error)

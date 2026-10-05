@@ -16,7 +16,7 @@ class PageController extends Controller
     {
         $cmsPage = Page::whereIn('slug', ['about-us', 'about'])->first();
         if ($cmsPage && !empty($cmsPage->content)) {
-            return view('pages.cms-page', compact('cmsPage'));
+            return $this->renderCmsPage($cmsPage);
         }
         return view('pages.about');
     }
@@ -30,7 +30,7 @@ class PageController extends Controller
     {
         $cmsPage = Page::where('slug', 'factory')->first();
         if ($cmsPage && !empty($cmsPage->content)) {
-            return view('pages.cms-page', compact('cmsPage'));
+            return $this->renderCmsPage($cmsPage);
         }
         return view('pages.factory');
     }
@@ -39,7 +39,7 @@ class PageController extends Controller
     {
         $cmsPage = Page::where('slug', 'service')->first();
         if ($cmsPage && !empty($cmsPage->content)) {
-            return view('pages.cms-page', compact('cmsPage'));
+            return $this->renderCmsPage($cmsPage);
         }
         if (view()->exists('pages.static.service')) {
             return view('pages.static.service');
@@ -75,7 +75,7 @@ class PageController extends Controller
         // 2. Check if it's a CMS Page in DB
         $cmsPage = Page::where('slug', $slug)->first();
         if ($cmsPage && !empty($cmsPage->content)) {
-            return view('pages.cms-page', compact('cmsPage'));
+            return $this->renderCmsPage($cmsPage);
         }
 
         // 3. Direct route aliases
@@ -123,5 +123,25 @@ class PageController extends Controller
 
         // 7. Fallback
         abort(404);
+    }
+
+    /**
+     * Render trang CMS kèm thay thế số liệu động từ Cấu hình Website
+     */
+    private function renderCmsPage(Page $cmsPage): View
+    {
+        $area = setting('stats_factory_area', '10,000');
+        $machines = setting('stats_machines', '50');
+        $employees = setting('stats_employees', '180');
+        $capacity = setting('stats_capacity', '200');
+
+        $content = $cmsPage->content;
+        $content = preg_replace('/(\d+[\d,.]*\s*m²)/u', $area . 'm²', $content);
+        $content = preg_replace('/(\d+\s*máy ép)/u', $machines . ' máy ép', $content);
+        $content = preg_replace('/(\d+\s*cán bộ)/u', $employees . ' cán bộ', $content);
+        $content = preg_replace('/(\d+\s*tấn\/tháng)/u', $capacity . ' tấn/tháng', $content);
+        $cmsPage->content = $content;
+
+        return view('pages.cms-page', compact('cmsPage'));
     }
 }

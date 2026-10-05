@@ -67,17 +67,35 @@
 
                 </div>
 
-                <form class="form-contact validation-contact w-100" novalidate method="post" action="{{ route('inquiry.store') }}"
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show w-100 mb-3 shadow-sm" role="alert">
+                        <i class="fas fa-check-circle mr-2"></i> {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show w-100 mb-3 shadow-sm" role="alert">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> <strong>Vui lòng kiểm tra lại thông tin:</strong>
+                        <ul class="mb-0 mt-1 pl-3 small">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                @endif
+
+                <form class="form-contact w-100" method="post" action="{{ route('inquiry.store') }}"
                     enctype="multipart/form-data">
-@csrf
+                    @csrf
 
                     <div class="row">
 
                         <div class="input-contact col-sm-6">
 
-                            <input type="text" class="form-control" id="ten" name="ten" placeholder="Full name"
-
-                                required />
+                            <input type="text" class="form-control" id="ten" name="ten" placeholder="Full name *"
+                                value="{{ old('ten') }}" required />
 
                             <div class="invalid-feedback">Please enter your first and last name</div>
 
@@ -85,9 +103,8 @@
 
                         <div class="input-contact col-sm-6">
 
-                            <input type="number" class="form-control" id="dienthoai" name="dienthoai"
-
-                                placeholder="Phone" required />
+                            <input type="text" class="form-control" id="dienthoai" name="dienthoai"
+                                placeholder="Phone *" value="{{ old('dienthoai') }}" required />
 
                             <div class="invalid-feedback">Please enter the phone number</div>
 
@@ -99,19 +116,15 @@
 
                         <div class="input-contact col-sm-6">
 
-                            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Address"
-
-                                required />
-
-                            <div class="invalid-feedback">Please enter your address</div>
+                            <input type="text" class="form-control" id="diachi" name="diachi" placeholder="Company / Address"
+                                value="{{ old('diachi') }}" />
 
                         </div>
 
                         <div class="input-contact col-sm-6">
 
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-
-                                required />
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email *"
+                                value="{{ old('email') }}" required />
 
                             <div class="invalid-feedback">Please enter email address</div>
 
@@ -122,42 +135,26 @@
                     <div class="input-contact">
 
                         <input type="text" class="form-control" id="tieude" name="tieude" placeholder="Subject"
-
-                            required />
-
-                        <div class="invalid-feedback">Please enter subject</div>
+                            value="{{ old('tieude') }}" />
 
                     </div>
 
                     <div class="input-contact">
 
-                        <textarea class="form-control" id="noidung" name="noidung" placeholder="Content"
-
-                            required></textarea>
+                        <textarea class="form-control" id="noidung" name="noidung" rows="5" placeholder="Content *"
+                            required>{{ old('noidung') }}</textarea>
 
                         <div class="invalid-feedback">Please enter content</div>
 
                     </div>
 
-                    <div class="input-contact">
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold" name="submit-contact" id="submitBtn">
+                            <i class="fas fa-paper-plane mr-1"></i> Send Inquiry
+                        </button>
 
-                        <input type="file" class="custom-file-input" name="file">
-
-                        <label class="custom-file-label" for="file" title="Choose">Attachment file</label>
-
+                        <button type="reset" class="btn btn-secondary px-3 py-2 ml-2">Reset</button>
                     </div>
-
-                    <div class="g-recaptcha" data-sitekey="6LfXZS8qAAAAADC__k1mLyB072QGiwcMcWHv8ov_"></div>
-
-
-
-                    <input type="submit" class="btn btn-primary" name="submit-contact" id="submitBtn" value="Send" disabled />
-
-                    <input type="reset" class="btn btn-secondary" value="Reset" />
-
-                    <input type="hidden" name="recaptcha_response_contact" id="recaptchaResponseContact">
-
-                    
 
                 </form>
 

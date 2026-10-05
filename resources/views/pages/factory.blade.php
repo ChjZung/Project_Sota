@@ -31,11 +31,11 @@
                     </p>
                     <div class="stats-mini-row">
                         <div class="stat-mini-box">
-                            <span class="stat-mini-num">10,000m²</span>
+                            <span class="stat-mini-num">{{ setting('stats_factory_area', '10,000') }}m²</span>
                             <span class="stat-mini-label">Diện tích nhà máy</span>
                         </div>
                         <div class="stat-mini-box">
-                            <span class="stat-mini-num">50+</span>
+                            <span class="stat-mini-num">{{ setting('stats_machines', '50') }}+</span>
                             <span class="stat-mini-label">Máy ép phun tự động</span>
                         </div>
                         <div class="stat-mini-box">
@@ -43,7 +43,7 @@
                             <span class="stat-mini-label">Dải lực kẹp khuôn</span>
                         </div>
                         <div class="stat-mini-box">
-                            <span class="stat-mini-num">200+ Tấn</span>
+                            <span class="stat-mini-num">{{ setting('stats_capacity', '200') }}+ Tấn</span>
                             <span class="stat-mini-label">Công suất/tháng</span>
                         </div>
                     </div>
