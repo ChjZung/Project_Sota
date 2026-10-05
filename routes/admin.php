@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -48,8 +50,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/partners/{partner}/toggle-active', [PartnerController::class, 'toggleActive'])->name('partners.toggleActive');
         Route::resource('partners', PartnerController::class)->except(['show']);
 
-        Route::get('/inquiries', function () {
-            return view('admin.dashboard')->with('info', 'Chức năng Quản lý Yêu cầu Báo giá sẽ được mở ở Giai đoạn 5.');
-        })->name('inquiries.index');
+        // Giai đoạn 5: Quản lý Yêu cầu Báo giá (Inquiries)
+        Route::patch('/inquiries/{inquiry}/status', [InquiryController::class, 'updateStatus'])->name('inquiries.updateStatus');
+        Route::resource('inquiries', InquiryController::class)->only(['index', 'show', 'update', 'destroy']);
+
+        // Giai đoạn 5: Tài khoản & Đổi mật khẩu Admin
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     });
 });

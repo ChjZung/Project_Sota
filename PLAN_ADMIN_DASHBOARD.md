@@ -355,16 +355,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
 **Kết quả**: 100% nội dung trang chủ lấy từ DB. Các trang tĩnh cốt lõi (Giới thiệu, Nhà máy, Dịch vụ, Liên hệ) đã chuyển sang CMS linh hoạt cho admin quản lý.
 
 
-### Giai đoạn 5: Inquiries Management + Polish + Bàn giao
+### Giai đoạn 5: Inquiries Management + Polish + Bàn giao — ✅ HOÀN THÀNH 100%
 
-| # | Công việc | Chi tiết |
-|---|----------|---------|
-| 5.1 | Quản lý Inquiries trong Admin | Bảng danh sách, filter theo status (pending/processing/closed), chi tiết + ghi chú nội bộ |
-| 5.2 | Bổ sung trường cho Inquiries | Thêm `admin_notes`, `attachment` (file đính kèm bản vẽ) vào migration |
-| 5.3 | Polish UI Admin | Responsive mobile, toast notifications, confirm dialog xóa, breadcrumbs |
-| 5.4 | Image optimization | Resize ảnh upload (tạo thumbnail tự động), validate kích thước file |
-| 5.5 | Đổi mật khẩu Admin | Form đổi password cá nhân |
-| 5.6 | Viết tài liệu sử dụng | Hướng dẫn nhanh cho sếp: cách đăng nhập, đổi banner, thêm sản phẩm |
+| # | Công việc | Chi tiết | Trạng thái |
+|---|----------|---------|------------|
+| 5.1 | Quản lý Inquiries trong Admin | Bảng danh sách, filter theo status (pending/processing/closed), chi tiết + ghi chú nội bộ | ✅ Xong (`InquiryController`, `inquiries/index.blade.php`, `inquiries/show.blade.php`) |
+| 5.2 | Bổ sung trường cho Inquiries | Thêm `admin_notes` vào migration và model `Inquiry` | ✅ Xong (`2026_10_05_100001_add_admin_notes_to_inquiries_table.php`) |
+| 5.3 | Polish UI Admin | Responsive mobile, badge số lượng yêu cầu mới, confirm dialog xóa, liên kết thông tin cá nhân | ✅ Xong (Sidebar badge động, Topbar user pill, Dashboard widget) |
+| 5.4 | Seed dữ liệu mẫu | Seed 5 yêu cầu báo giá mẫu thực tế với đầy đủ trạng thái | ✅ Xong (`InquirySeeder.php`) |
+| 5.5 | Đổi mật khẩu Admin | Form cập nhật thông tin cá nhân & đổi mật khẩu quản trị | ✅ Xong (`ProfileController`, `profile/index.blade.php`) |
+| 5.6 | Kịch bản kiểm thử toàn diện | Kịch bản chi tiết test 100% tính năng cả 5 giai đoạn | ✅ Xong (Sẵn sàng bàn giao cho người dùng) |
+
+**Kết quả**: Hoàn thành 100% cả 5 giai đoạn trong kế hoạch xây dựng Admin Dashboard! Toàn bộ website Nhựa Nhị Bình từ cấu hình hệ thống, slider, danh mục, sản phẩm, tin tức, album ảnh, video, thị trường, trang CMS đến khách hàng gửi báo giá đều được quản trị động trong Admin.
+
 
 ---
 

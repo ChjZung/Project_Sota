@@ -387,15 +387,15 @@
                     <i class="fas fa-external-link-alt mr-1"></i> Xem Trang Chủ
                 </a>
 
-                <div class="admin-user-pill">
+                <a href="{{ route('admin.profile.edit') }}" class="admin-user-pill text-decoration-none" title="Thông tin tài khoản & Đổi mật khẩu">
                     <div class="admin-avatar">
                         {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
                     </div>
                     <div class="admin-info d-none d-sm-block">
                         <div class="name">{{ auth()->user()->name ?? 'Admin' }}</div>
-                        <div class="role">Quản trị viên</div>
+                        <div class="role">Quản trị viên <i class="fas fa-cog ml-1 text-muted"></i></div>
                     </div>
-                </div>
+                </a>
 
                 <form method="POST" action="{{ route('admin.logout') }}" class="d-inline" onsubmit="return confirm('Bạn có chắc chắn muốn đăng xuất?')">
                     @csrf

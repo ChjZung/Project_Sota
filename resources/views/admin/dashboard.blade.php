@@ -243,7 +243,7 @@
                                         <td class="text-center">
                                             @if($inquiry->status === 'pending')
                                                 <span class="badge badge-pending px-2 py-1">Chờ xử lý</span>
-                                            @elseif($inquiry->status === 'processed')
+                                            @elseif($inquiry->status === 'processing' || $inquiry->status === 'processed')
                                                 <span class="badge badge-processed px-2 py-1">Đang xử lý</span>
                                             @else
                                                 <span class="badge badge-closed px-2 py-1">Hoàn thành</span>

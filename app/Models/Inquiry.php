@@ -11,5 +11,5 @@ class Inquiry extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'phone', 'company', 'message', 'status'];
+    protected $fillable = ['name', 'email', 'phone', 'company', 'message', 'admin_notes', 'status'];
 }
