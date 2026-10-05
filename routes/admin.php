@@ -23,38 +23,38 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        // Giai đoạn 2: Cấu hình website
+        // Module: Cấu hình hệ thống
         Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
 
-        // Giai đoạn 2: Quản lý Banners / Slider
+        // Module: Quản lý Banners & Slider
         Route::patch('/banners/{banner}/toggle', [BannerController::class, 'toggle'])->name('banners.toggle');
         Route::resource('banners', BannerController::class)->except(['show']);
 
-        // Giai đoạn 3: Quản lý Danh mục sản phẩm
+        // Module: Quản lý Danh mục sản phẩm
         Route::resource('categories', CategoryController::class)->except(['show']);
 
-        // Giai đoạn 3: Quản lý Sản phẩm
+        // Module: Quản lý Sản phẩm
         Route::patch('/products/{product}/toggle-featured', [ProductController::class, 'toggleFeatured'])->name('products.toggleFeatured');
         Route::patch('/products/{product}/toggle-active', [ProductController::class, 'toggleActive'])->name('products.toggleActive');
         Route::resource('products', ProductController::class)->except(['show']);
 
-        // Giai đoạn 4: Tin tức & Truyền thông (News, Album, Video)
+        // Module: Quản lý Bài viết & Truyền thông
         Route::patch('/posts/{post}/toggle-publish', [PostController::class, 'togglePublish'])->name('posts.togglePublish');
         Route::resource('posts', PostController::class)->except(['show']);
 
-        // Giai đoạn 4: Trang CMS tĩnh
+        // Module: Quản lý Trang nội dung CMS
         Route::resource('pages', PageController::class)->except(['show']);
 
-        // Giai đoạn 4: Quản lý Đối tác, Thị trường & Chứng nhận
+        // Module: Quản lý Đối tác & Thị trường xuất khẩu
         Route::patch('/partners/{partner}/toggle-active', [PartnerController::class, 'toggleActive'])->name('partners.toggleActive');
         Route::resource('partners', PartnerController::class)->except(['show']);
 
-        // Giai đoạn 5: Quản lý Yêu cầu Báo giá (Inquiries)
+        // Module: Quản lý Yêu cầu Báo giá & Liên hệ
         Route::patch('/inquiries/{inquiry}/status', [InquiryController::class, 'updateStatus'])->name('inquiries.updateStatus');
         Route::resource('inquiries', InquiryController::class)->only(['index', 'show', 'update', 'destroy']);
 
-        // Giai đoạn 5: Tài khoản & Đổi mật khẩu Admin
+        // Module: Quản trị viên & Đổi mật khẩu
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     });

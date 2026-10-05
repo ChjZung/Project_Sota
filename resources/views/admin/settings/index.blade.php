@@ -341,7 +341,7 @@
                         <i class="fas fa-chart-pie text-success"></i> 4 Con Số Thống Kê Năng Lực Ở Trang Chủ
                     </div>
                     <p class="text-muted" style="font-size: 13.5px;">
-                        Các số liệu này hiển thị ở khối thống kê trang chủ. Khi quy mô công ty mở rộng, bạn chỉ cần sửa ở đây mà không cần code.
+                        Các số liệu năng lực sản xuất được đồng bộ hiển thị tại khối thống kê trang chủ và trang năng lực doanh nghiệp.
                     </p>
                     <div class="row">
                         <div class="col-md-3">
